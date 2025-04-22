@@ -25,20 +25,20 @@ class Command(BaseCommand):
         db.users.insert_many(users)
 
         teams = [
-            {"name": "Team A", "members": ["john_doe", "alice_wonder"]},
-            {"name": "Team B", "members": ["jane_smith"]}
+            {"name": "Team A", "score": 150},
+            {"name": "Team B", "score": 200}
         ]
         db.teams.insert_many(teams)
 
         activities = [
-            {"name": "Running", "calories_burned_per_min": 10},
-            {"name": "Cycling", "calories_burned_per_min": 8}
+            {"name": "Running", "calories_burned": 300},
+            {"name": "Cycling", "calories_burned": 250}
         ]
         db.activities.insert_many(activities)
 
         leaderboard = [
-            {"username": "john_doe", "points": 150},
-            {"username": "jane_smith", "points": 200}
+            {"username": "jane_smith", "score": 200},
+            {"username": "john_doe", "score": 150}
         ]
         db.leaderboard.insert_many(leaderboard)
 
@@ -48,7 +48,7 @@ class Command(BaseCommand):
         ]
         db.workouts.insert_many(workouts)
 
-        self.stdout.write(self.style.SUCCESS('Test data successfully added to the database.'))
+        self.stdout.write(self.style.SUCCESS('Database populated with test data.'))
 
 if __name__ == "__main__":
     command = Command()
