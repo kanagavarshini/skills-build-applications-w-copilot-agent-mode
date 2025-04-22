@@ -6,8 +6,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Connect to MongoDB Atlas
-        client = pymongo.MongoClient('mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority')
-        db = client['<dbname>']  # Replace <dbname> with your database name
+        client = pymongo.MongoClient('mongodb+srv://<your_username>:<your_password>@cluster0.mongodb.net/<your_dbname>?retryWrites=true&w=majority')
+        db = client['<your_dbname>']  # Replace '<your_dbname>' with your database name
 
         # Clear existing data
         db.users.delete_many({})
