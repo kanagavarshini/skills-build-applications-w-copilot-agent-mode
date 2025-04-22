@@ -20,31 +20,42 @@ class Command(BaseCommand):
         users = [
             {"username": "john_doe", "email": "john@example.com", "team": "Team A", "age": 30, "gender": "male"},
             {"username": "jane_smith", "email": "jane@example.com", "team": "Team B", "age": 25, "gender": "female"},
-            {"username": "alice_wonder", "email": "alice@example.com", "team": "Team A", "age": 28, "gender": "female"}
+            {"username": "alice_wonder", "email": "alice@example.com", "team": "Team A", "age": 28, "gender": "female"},
+            {"username": "bob_builder", "email": "bob@example.com", "team": "Team C", "age": 35, "gender": "male"},
+            {"username": "charlie_brown", "email": "charlie@example.com", "team": "Team B", "age": 22, "gender": "male"}
         ]
         db.users.insert_many(users)
 
         teams = [
             {"name": "Team A", "score": 150, "members": ["john_doe", "alice_wonder"], "description": "A competitive team focused on running."},
-            {"name": "Team B", "score": 200, "members": ["jane_smith"], "description": "A team excelling in cycling."}
+            {"name": "Team B", "score": 200, "members": ["jane_smith", "charlie_brown"], "description": "A team excelling in cycling."},
+            {"name": "Team C", "score": 120, "members": ["bob_builder"], "description": "A team passionate about swimming."}
         ]
         db.teams.insert_many(teams)
 
         activities = [
             {"name": "Running", "calories_burned": 300, "type": "cardio", "average_duration": 30},
-            {"name": "Cycling", "calories_burned": 250, "type": "cardio", "average_duration": 45}
+            {"name": "Cycling", "calories_burned": 250, "type": "cardio", "average_duration": 45},
+            {"name": "Swimming", "calories_burned": 400, "type": "cardio", "average_duration": 60},
+            {"name": "Yoga", "calories_burned": 100, "type": "flexibility", "average_duration": 50}
         ]
         db.activities.insert_many(activities)
 
         leaderboard = [
             {"username": "jane_smith", "score": 200, "rank": 1},
-            {"username": "john_doe", "score": 150, "rank": 2}
+            {"username": "john_doe", "score": 150, "rank": 2},
+            {"username": "bob_builder", "score": 120, "rank": 3},
+            {"username": "alice_wonder", "score": 110, "rank": 4},
+            {"username": "charlie_brown", "score": 90, "rank": 5}
         ]
         db.leaderboard.insert_many(leaderboard)
 
         workouts = [
             {"username": "john_doe", "activity": "Running", "duration": 30, "timestamp": "2025-04-20T10:00:00Z"},
-            {"username": "jane_smith", "activity": "Cycling", "duration": 45, "timestamp": "2025-04-21T15:00:00Z"}
+            {"username": "jane_smith", "activity": "Cycling", "duration": 45, "timestamp": "2025-04-21T15:00:00Z"},
+            {"username": "alice_wonder", "activity": "Yoga", "duration": 50, "timestamp": "2025-04-22T08:00:00Z"},
+            {"username": "bob_builder", "activity": "Swimming", "duration": 60, "timestamp": "2025-04-19T09:30:00Z"},
+            {"username": "charlie_brown", "activity": "Running", "duration": 25, "timestamp": "2025-04-18T07:45:00Z"}
         ]
         db.workouts.insert_many(workouts)
 
