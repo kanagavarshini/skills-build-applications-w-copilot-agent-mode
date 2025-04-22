@@ -17,8 +17,8 @@ class Command(BaseCommand):
         # Create users
         users = [
             User.objects.create(
-                username="john_doe",
-                email="john@example.com",
+                username="thundergod",
+                email="thundergod@octofit.edu",
                 password=make_password("password123"),
                 team="Team A",
                 age=30,
@@ -26,8 +26,8 @@ class Command(BaseCommand):
                 created_at=datetime.now(timezone.utc)
             ),
             User.objects.create(
-                username="jane_smith",
-                email="jane@example.com",
+                username="metalgeek",
+                email="metalgeek@octofit.edu",
                 password=make_password("password123"),
                 team="Team B",
                 age=25,
@@ -35,8 +35,8 @@ class Command(BaseCommand):
                 created_at=datetime.now(timezone.utc)
             ),
             User.objects.create(
-                username="alice_wonder",
-                email="alice@example.com",
+                username="zerocool",
+                email="zerocool@octofit.edu",
                 password=make_password("password123"),
                 team="Team A",
                 age=28,
@@ -44,8 +44,8 @@ class Command(BaseCommand):
                 created_at=datetime.now(timezone.utc)
             ),
             User.objects.create(
-                username="bob_builder",
-                email="bob@example.com",
+                username="crashoverride",
+                email="crashoverride@octofit.edu",
                 password=make_password("password123"),
                 team="Team C",
                 age=35,
@@ -53,8 +53,8 @@ class Command(BaseCommand):
                 created_at=datetime.now(timezone.utc)
             ),
             User.objects.create(
-                username="charlie_brown",
-                email="charlie@example.com",
+                username="sleeptoken",
+                email="sleeptoken@octofit.edu",
                 password=make_password("password123"),
                 team="Team B",
                 age=22,
@@ -68,21 +68,21 @@ class Command(BaseCommand):
             Team.objects.create(
                 name="Team A",
                 score=150,
-                members=["john_doe", "alice_wonder"],
+                members=["thundergod", "zerocool"],
                 description="A competitive team focused on running.",
                 created_at=datetime.now(timezone.utc)
             ),
             Team.objects.create(
                 name="Team B",
                 score=200,
-                members=["jane_smith", "charlie_brown"],
+                members=["metalgeek", "sleeptoken"],
                 description="A team excelling in cycling.",
                 created_at=datetime.now(timezone.utc)
             ),
             Team.objects.create(
                 name="Team C",
                 score=120,
-                members=["bob_builder"],
+                members=["crashoverride"],
                 description="A team passionate about swimming.",
                 created_at=datetime.now(timezone.utc)
             )
@@ -122,45 +122,70 @@ class Command(BaseCommand):
 
         # Create leaderboard entries
         leaderboard_entries = [
-            Leaderboard.objects.create(username="jane_smith", score=200, rank=1, last_updated=datetime.now(timezone.utc)),
-            Leaderboard.objects.create(username="john_doe", score=150, rank=2, last_updated=datetime.now(timezone.utc)),
-            Leaderboard.objects.create(username="bob_builder", score=120, rank=3, last_updated=datetime.now(timezone.utc)),
-            Leaderboard.objects.create(username="alice_wonder", score=110, rank=4, last_updated=datetime.now(timezone.utc)),
-            Leaderboard.objects.create(username="charlie_brown", score=90, rank=5, last_updated=datetime.now(timezone.utc))
+            Leaderboard.objects.create(
+                username="metalgeek",
+                score=200,
+                rank=1,
+                last_updated=datetime.now(timezone.utc)
+            ),
+            Leaderboard.objects.create(
+                username="thundergod",
+                score=150,
+                rank=2,
+                last_updated=datetime.now(timezone.utc)
+            ),
+            Leaderboard.objects.create(
+                username="crashoverride",
+                score=120,
+                rank=3,
+                last_updated=datetime.now(timezone.utc)
+            ),
+            Leaderboard.objects.create(
+                username="zerocool",
+                score=110,
+                rank=4,
+                last_updated=datetime.now(timezone.utc)
+            ),
+            Leaderboard.objects.create(
+                username="sleeptoken",
+                score=90,
+                rank=5,
+                last_updated=datetime.now(timezone.utc)
+            )
         ]
 
         # Create workouts
         workouts = [
             Workout.objects.create(
-                username="john_doe",
+                username="thundergod",
                 activity="Running",
                 duration=30,
                 calories_burned=300,
                 timestamp=datetime.now(timezone.utc)
             ),
             Workout.objects.create(
-                username="jane_smith",
+                username="metalgeek",
                 activity="Cycling",
                 duration=45,
                 calories_burned=250,
                 timestamp=datetime.now(timezone.utc)
             ),
             Workout.objects.create(
-                username="alice_wonder",
+                username="zerocool",
                 activity="Yoga",
                 duration=50,
                 calories_burned=100,
                 timestamp=datetime.now(timezone.utc)
             ),
             Workout.objects.create(
-                username="bob_builder",
+                username="crashoverride",
                 activity="Swimming",
                 duration=60,
                 calories_burned=400,
                 timestamp=datetime.now(timezone.utc)
             ),
             Workout.objects.create(
-                username="charlie_brown",
+                username="sleeptoken",
                 activity="Running",
                 duration=25,
                 calories_burned=250,
