@@ -18,33 +18,33 @@ class Command(BaseCommand):
 
         # Add test data
         users = [
-            {"username": "john_doe", "email": "john@example.com", "team": "Team A"},
-            {"username": "jane_smith", "email": "jane@example.com", "team": "Team B"},
-            {"username": "alice_wonder", "email": "alice@example.com", "team": "Team A"}
+            {"username": "john_doe", "email": "john@example.com", "team": "Team A", "age": 30, "gender": "male"},
+            {"username": "jane_smith", "email": "jane@example.com", "team": "Team B", "age": 25, "gender": "female"},
+            {"username": "alice_wonder", "email": "alice@example.com", "team": "Team A", "age": 28, "gender": "female"}
         ]
         db.users.insert_many(users)
 
         teams = [
-            {"name": "Team A", "score": 150},
-            {"name": "Team B", "score": 200}
+            {"name": "Team A", "score": 150, "members": ["john_doe", "alice_wonder"], "description": "A competitive team focused on running."},
+            {"name": "Team B", "score": 200, "members": ["jane_smith"], "description": "A team excelling in cycling."}
         ]
         db.teams.insert_many(teams)
 
         activities = [
-            {"name": "Running", "calories_burned": 300},
-            {"name": "Cycling", "calories_burned": 250}
+            {"name": "Running", "calories_burned": 300, "type": "cardio", "average_duration": 30},
+            {"name": "Cycling", "calories_burned": 250, "type": "cardio", "average_duration": 45}
         ]
         db.activities.insert_many(activities)
 
         leaderboard = [
-            {"username": "jane_smith", "score": 200},
-            {"username": "john_doe", "score": 150}
+            {"username": "jane_smith", "score": 200, "rank": 1},
+            {"username": "john_doe", "score": 150, "rank": 2}
         ]
         db.leaderboard.insert_many(leaderboard)
 
         workouts = [
-            {"username": "john_doe", "activity": "Running", "duration": 30},
-            {"username": "jane_smith", "activity": "Cycling", "duration": 45}
+            {"username": "john_doe", "activity": "Running", "duration": 30, "timestamp": "2025-04-20T10:00:00Z"},
+            {"username": "jane_smith", "activity": "Cycling", "duration": 45, "timestamp": "2025-04-21T15:00:00Z"}
         ]
         db.workouts.insert_many(workouts)
 
