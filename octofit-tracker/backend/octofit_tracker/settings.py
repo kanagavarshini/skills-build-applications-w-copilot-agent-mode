@@ -50,7 +50,7 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': '<dbname>',  # Replace <dbname> with your database name
+        'NAME': 'octofit_db',  # Updated database name
         'CLIENT': {
             'host': 'mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority',  # Replace <username>, <password>, and <dbname>
             'retryWrites': True,

@@ -20,34 +20,35 @@ class Command(BaseCommand):
         users = [
             {"username": "john_doe", "email": "john@example.com", "team": "Team A"},
             {"username": "jane_smith", "email": "jane@example.com", "team": "Team B"},
+            {"username": "alice_wonder", "email": "alice@example.com", "team": "Team A"}
         ]
         db.users.insert_many(users)
 
         teams = [
-            {"name": "Team A", "members": ["john_doe"]},
-            {"name": "Team B", "members": ["jane_smith"]},
+            {"name": "Team A", "members": ["john_doe", "alice_wonder"]},
+            {"name": "Team B", "members": ["jane_smith"]}
         ]
         db.teams.insert_many(teams)
 
         activities = [
-            {"user": "john_doe", "activity_type": "Running", "duration": 30, "calories_burned": 300},
-            {"user": "jane_smith", "activity_type": "Cycling", "duration": 45, "calories_burned": 400},
+            {"name": "Running", "calories_burned_per_min": 10},
+            {"name": "Cycling", "calories_burned_per_min": 8}
         ]
         db.activities.insert_many(activities)
 
         leaderboard = [
-            {"user": "john_doe", "points": 100},
-            {"user": "jane_smith", "points": 120},
+            {"username": "john_doe", "points": 150},
+            {"username": "jane_smith", "points": 200}
         ]
         db.leaderboard.insert_many(leaderboard)
 
         workouts = [
-            {"name": "Morning Yoga", "description": "A relaxing yoga session", "duration": 60},
-            {"name": "HIIT", "description": "High-intensity interval training", "duration": 30},
+            {"username": "john_doe", "activity": "Running", "duration": 30},
+            {"username": "jane_smith", "activity": "Cycling", "duration": 45}
         ]
         db.workouts.insert_many(workouts)
 
-        self.stdout.write(self.style.SUCCESS('Database populated with test data.'))
+        self.stdout.write(self.style.SUCCESS('Test data successfully added to the database.'))
 
 if __name__ == "__main__":
     command = Command()
