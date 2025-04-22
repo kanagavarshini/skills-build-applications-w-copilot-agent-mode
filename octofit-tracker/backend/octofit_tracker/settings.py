@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Set default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -36,6 +39,23 @@ INSTALLED_APPS = [
     'octofit_tracker',
 ]
 
+# Add TEMPLATES configuration before MIDDLEWARE
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -46,16 +66,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Add MongoDB database connection and enable CORS
+# Database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'octofit_db',  # Updated database name
-        'CLIENT': {
-            'host': 'mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority',  # Replace <username>, <password>, and <dbname>
-            'retryWrites': True,
-            'w': 'majority'
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -67,3 +82,7 @@ CORS_ALLOW_HEADERS = ['*']
 
 # Allow all hosts
 ALLOWED_HOSTS = ['*']
+
+# Add timezone settings
+USE_TZ = True
+TIME_ZONE = 'UTC'
