@@ -102,51 +102,38 @@ class Command(BaseCommand):
         ]
 
         # Create leaderboard entries
-        leaderboard_entries = [
+        for user in users:
             Leaderboard.objects.create(
-                user=User.objects.get(username="metalgeek"),
-                score=200
-            ),
-            Leaderboard.objects.create(
-                user=User.objects.get(username="thundergod"),
-                score=150
-            ),
-            Leaderboard.objects.create(
-                user=User.objects.get(username="crashoverride"),
-                score=120
-            ),
-            Leaderboard.objects.create(
-                user=User.objects.get(username="zerocool"),
-                score=110
-            ),
-            Leaderboard.objects.create(
-                user=User.objects.get(username="sleeptoken"),
-                score=90
+                user=user,
+                score=100 + hash(user.username) % 100  # Random-ish score between 100-199
             )
-        ]
 
         # Create workouts
         workouts = [
             Workout.objects.create(
-                name="High Intensity Running",
-                description="Interval training with sprints and recovery periods"
+                name="Morning HIIT",
+                description="High-intensity interval training with bodyweight exercises"
             ),
             Workout.objects.create(
-                name="Endurance Cycling",
-                description="Long-distance cycling workout focusing on stamina"
+                name="Endurance Run",
+                description="5km continuous run at moderate pace"
             ),
             Workout.objects.create(
-                name="Power Swimming",
-                description="Mixed stroke swimming workout for full body fitness"
+                name="Power Cycling",
+                description="Indoor cycling with varying resistance levels"
+            ),
+            Workout.objects.create(
+                name="Swim Session",
+                description="Mixed stroke swimming workout"
             ),
             Workout.objects.create(
                 name="Strength Training",
-                description="Full body workout with focus on major muscle groups"
-            ),
-            Workout.objects.create(
-                name="HIIT Circuit",
-                description="High-intensity interval training with mixed exercises"
+                description="Full body workout with free weights"
             )
         ]
 
-        self.stdout.write(self.style.SUCCESS('Database populated with test data successfully!'))
+        self.stdout.write(self.style.SUCCESS('Successfully created {} users'.format(len(users))))
+        self.stdout.write(self.style.SUCCESS('Successfully created {} teams'.format(Team.objects.count())))
+        self.stdout.write(self.style.SUCCESS('Successfully created {} activities'.format(len(activities))))
+        self.stdout.write(self.style.SUCCESS('Successfully created {} leaderboard entries'.format(Leaderboard.objects.count())))
+        self.stdout.write(self.style.SUCCESS('Successfully created {} workouts'.format(len(workouts))))
